@@ -1,6 +1,5 @@
 import createEmotionServer from "@emotion/server/create-instance";
 
-// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import * as React from "react";
@@ -11,12 +10,13 @@ import theme from "src/theme";
 export default class _Document extends Document {
   render() {
     return (
-      <Html lang="ko">
+      <Html lang="en">
         <Head>
-          <meta content={theme.palette.primary.main} name="theme-color" />
+          {/* PWA primary color */}
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
         <body>
@@ -34,7 +34,7 @@ _Document.getInitialProps = async (ctx) => {
   const cache = createEmotionCache();
   const { extractCriticalToChunks } = createEmotionServer(cache);
 
-  ctx.renderPage = () => {
+  ctx.renderPage = () =>
     originalRenderPage({
       enhanceApp: function enhanceApp(App) {
         return function _enhanceApp(props) {
@@ -42,18 +42,14 @@ _Document.getInitialProps = async (ctx) => {
         };
       },
     });
-  };
 
   const initialProps = await Document.getInitialProps(ctx);
-
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (
     <style
-      dangerouslySetInnerHTML={{
-        __html: style.css,
-      }}
       data-emotion={`${style.key} ${style.ids.join(" ")}`}
       key={style.key}
+      dangerouslySetInnerHTML={{ __html: style.css }}
     />
   ));
 
