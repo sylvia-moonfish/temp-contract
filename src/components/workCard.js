@@ -14,7 +14,7 @@ export default function WorkCard(props) {
 
   return (
     <Link
-      href={props.workCardItem.url ? props.workCardItem.url : ""}
+      href={props.workCardItem.url ? `/${props.workCardItem.url}` : "/"}
       passHref={true}
     >
       <Grid

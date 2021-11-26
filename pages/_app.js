@@ -1,6 +1,5 @@
 import { CacheProvider } from "@emotion/react";
 
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import { ThemeProvider } from "@mui/material/styles";
@@ -14,6 +13,7 @@ import * as React from "react";
 
 import createEmotionCache from "src/createEmotionCache";
 import theme from "src/theme";
+import "styles/globals.css";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -35,81 +35,6 @@ function App(props) {
             padding: 2,
           }}
         >
-          <Grid
-            item
-            sx={{
-              backgroundColor: "white",
-              paddingLeft: 10,
-              paddingRight: 10,
-              paddingTop: 15,
-            }}
-          >
-            <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              sx={{
-                borderBottom: "1px solid",
-              }}
-            >
-              <Grid item>
-                <Button
-                  sx={{
-                    fontSize: 15,
-                    fontWeight: 500,
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    paddingTop: 1,
-                  }}
-                  variant="text"
-                >
-                  Work
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  sx={{
-                    fontSize: 15,
-                    fontWeight: 500,
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    paddingTop: 1,
-                  }}
-                  variant="text"
-                >
-                  About
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  sx={{
-                    fontSize: 15,
-                    fontWeight: 500,
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    paddingTop: 1,
-                  }}
-                  variant="text"
-                >
-                  Awards
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button
-                  sx={{
-                    fontSize: 15,
-                    fontWeight: 500,
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    paddingTop: 1,
-                  }}
-                  variant="text"
-                >
-                  Contact
-                </Button>
-              </Grid>
-            </Grid>
-          </Grid>
           <Component {...pageProps} />
           <Grid
             item

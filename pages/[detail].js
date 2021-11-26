@@ -95,8 +95,6 @@ export default function DetailPage(props) {
             return <ImagesBlock block={block} key={index}></ImagesBlock>;
         }
 
-        console.log(block);
-
         return <div key={index}></div>;
       })}
     </>
